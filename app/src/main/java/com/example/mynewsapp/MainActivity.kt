@@ -21,8 +21,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyNewsAppTheme {
                 // A surface container using the 'background' color from the theme
+              feat/splash-screen
                 Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background))
                 OnBoardingScreen()
+
             }
         }
     }
