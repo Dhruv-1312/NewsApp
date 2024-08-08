@@ -16,7 +16,7 @@ fun NewsButton(
     onClick: () -> Unit,
 ) {
     Button(
-        onClick = { /*TODO*/ },
+        onClick = onClick,
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.primary,
             contentColor = Color.White,
