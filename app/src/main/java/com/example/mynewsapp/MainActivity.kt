@@ -14,31 +14,40 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import com.example.mynewsapp.domain.usecases.AppEntryUseCases
 import com.example.mynewsapp.presentation.onboarding.OnBoardingScreen
+import com.example.mynewsapp.presentation.onboarding.OnBoardingViewModel
 import com.example.mynewsapp.ui.theme.MyNewsAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
    @Inject
-   lateinit var appEntryUseCases: AppEntryUseCases
+   lateinit var  useCases:AppEntryUseCases
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window,false)
-        lifecycleScope.launch {
-            appEntryUseCases.readAppEntry().collect{
+        lifecycleScope.launch{
+            useCases.readAppEntry().collect{
                 Log.d("Test",it.toString())
             }
         }
         setContent {
             MyNewsAppTheme {
+
                 // A surface container using the 'background' color from the theme
-                Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background))
-                OnBoardingScreen()
+                Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)){
+                    val viewModel: OnBoardingViewModel = hiltViewModel()
+                    OnBoardingScreen(
+                        event = viewModel::onEvent
+                    )
+                }
 
             }
         }
