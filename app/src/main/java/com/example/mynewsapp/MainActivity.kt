@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,28 +26,22 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.mynewsapp.presentation.navgraph.NavGraph
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-   @Inject
-   lateinit var  useCases:AppEntryUseCases
+    val viewModel by viewModels<MainViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window,false)
-        lifecycleScope.launch{
-            useCases.readAppEntry().collect{
-                Log.d("Test",it.toString())
-            }
-        }
+
         setContent {
             MyNewsAppTheme {
 
                 // A surface container using the 'background' color from the theme
                 Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)){
-                    val viewModel: OnBoardingViewModel = hiltViewModel()
-                    OnBoardingScreen(
-                        event = viewModel::onEvent
-                    )
+                    val startDestination=   viewModel.startDestination
+                    NavGraph(startDestination =startDestination  )
                 }
 
             }
