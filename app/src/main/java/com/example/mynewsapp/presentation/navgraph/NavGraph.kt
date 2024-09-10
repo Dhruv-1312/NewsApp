@@ -13,16 +13,16 @@ import androidx.navigation.compose.composable
 
 
 @Composable
-fun NavGraph(startDestination:String){
-    val navController= rememberNavController()
-    NavHost(navController = navController, startDestination=startDestination){
+fun NavGraph(startDestination: String) {
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = startDestination) {
         navigation(
-            route=Route.AppStartNavigation.route,
+            route = Route.AppStartNavigation.route,
             startDestination = Route.OnBoardingScreen.route
-        ){
+        ) {
             composable(
                 route = Route.OnBoardingScreen.route,
-            ){
+            ) {
                 val viewModel: OnBoardingViewModel = hiltViewModel()
                 OnBoardingScreen(
                     event = viewModel::onEvent
@@ -30,12 +30,12 @@ fun NavGraph(startDestination:String){
             }
         }
         navigation(
-            route=Route.NewsNavigation.route,
+            route = Route.NewsNavigation.route,
             startDestination = Route.NewsNavigatorScreen.route,
-        ){
+        ) {
             composable(
-                route=Route.NewsNavigatorScreen.route
-            ){
+                route = Route.NewsNavigatorScreen.route
+            ) {
                 Text(text = "News Navigator Screen")
             }
         }
