@@ -23,7 +23,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.mynewsapp.presentation.onboarding.common.NewsButton
+import com.example.mynewsapp.presentation.common.NewsButton
 import com.example.mynewsapp.presentation.onboarding.components.OnBoardingPage
 import com.example.mynewsapp.presentation.onboarding.components.PagerIndicator
 import kotlinx.coroutines.launch
