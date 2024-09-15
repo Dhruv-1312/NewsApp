@@ -53,6 +53,7 @@ android {
 
 dependencies {
     implementation("androidx.paging:paging-runtime-ktx:3.3.2")
+    implementation("androidx.paging:paging-compose:3.3.2")
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation("androidx.navigation:navigation-compose:2.8.0")
     implementation("androidx.fragment:fragment-ktx:1.8.3")
