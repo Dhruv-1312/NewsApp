@@ -33,6 +33,8 @@ import com.example.mynewsapp.domain.model.Source
 import com.example.mynewsapp.presentation.onboarding.Dimens.ArticleCardSize
 import com.example.mynewsapp.presentation.onboarding.Dimens.ExtraSmallPadding
 import com.example.mynewsapp.presentation.onboarding.Dimens.ExtraSmallPadding2
+import com.example.mynewsapp.presentation.onboarding.Dimens.MediumPadding1
+import com.example.mynewsapp.presentation.onboarding.Dimens.MediumPadding2
 import com.example.mynewsapp.presentation.onboarding.Dimens.SmallIconSize
 import com.example.mynewsapp.ui.theme.MyNewsAppTheme
 
@@ -55,7 +57,7 @@ fun ArticleCard(
         Column(
             verticalArrangement = Arrangement.SpaceAround,
             modifier = Modifier
-                .padding(horizontal = ExtraSmallPadding)
+                .padding(horizontal = MediumPadding1)
                 .height(
                     ArticleCardSize
                 ),
