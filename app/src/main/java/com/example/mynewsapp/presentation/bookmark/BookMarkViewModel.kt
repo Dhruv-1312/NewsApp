@@ -22,7 +22,7 @@ class BookMarkViewModel @Inject constructor(
     }
 
     private fun getArticles(){
-        newUseCases.selectArticle().onEach {
+        newUseCases.selectArticles().onEach {
         _state.value = _state.value.copy(articles = it)
         }.launchIn(viewModelScope)
     }

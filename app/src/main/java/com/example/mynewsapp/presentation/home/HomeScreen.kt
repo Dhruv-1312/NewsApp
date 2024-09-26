@@ -31,7 +31,7 @@ import com.example.mynewsapp.presentation.onboarding.Dimens.MediumPadding1
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(articles: LazyPagingItems<Article>, navigate: (String) -> Unit) {
+fun HomeScreen(articles: LazyPagingItems<Article>, navigateToSearch: () -> Unit,navigateToDetails: (Article)->Unit) {
     val title by remember {
         derivedStateOf {
             if (articles.itemCount > 10) {
@@ -68,7 +68,7 @@ fun HomeScreen(articles: LazyPagingItems<Article>, navigate: (String) -> Unit) {
                 .fillMaxWidth(),
             text = "", readOnly = true, onValueChanged = {},
             onClick = {
-                navigate(Route.SearchScreen.route)
+               navigateToSearch()
             },
             onSearch = {},
         )
@@ -89,7 +89,7 @@ fun HomeScreen(articles: LazyPagingItems<Article>, navigate: (String) -> Unit) {
             articles = articles,
 
             ) {
-            navigate(Route.DetailedScreen.route)
+            navigateToDetails(it)
         }
     }
 }

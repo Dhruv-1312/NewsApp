@@ -17,6 +17,7 @@ import com.example.mynewsapp.presentation.bookmark.BookMarkScreen
 import com.example.mynewsapp.presentation.bookmark.BookMarkViewModel
 import com.example.mynewsapp.presentation.home.HomeScreen
 import com.example.mynewsapp.presentation.home.HomeViewModel
+import com.example.mynewsapp.presentation.newsNavigator.components.NewsNavigator
 import com.example.mynewsapp.presentation.search.SearchScreen
 import com.loc.newsapp.presentation.search.SearchViewModel
 
@@ -44,8 +45,7 @@ fun NavGraph(startDestination: String) {
             composable(
                 route = Route.NewsNavigatorScreen.route
             ) {
-                val viewModel: BookMarkViewModel = hiltViewModel()
-                BookMarkScreen(state = viewModel.state.value, navigate = {} )
+               NewsNavigator()
             }
         }
     }
