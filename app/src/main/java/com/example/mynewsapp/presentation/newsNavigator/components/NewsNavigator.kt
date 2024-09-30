@@ -23,6 +23,7 @@ import com.example.mynewsapp.domain.model.Article
 import com.example.mynewsapp.presentation.bookmark.BookMarkScreen
 import com.example.mynewsapp.presentation.bookmark.BookMarkViewModel
 import com.example.mynewsapp.presentation.details.components.DetailsScreen
+import com.example.mynewsapp.presentation.details.components.DetailsViewModel
 import com.example.mynewsapp.presentation.home.HomeScreen
 import com.example.mynewsapp.presentation.home.HomeViewModel
 import com.example.mynewsapp.presentation.navgraph.Route
@@ -124,11 +125,12 @@ fun NewsNavigator() {
                 )
             }
             composable(route = Route.DetailedScreen.route) {
+                val viewModel : DetailsViewModel = hiltViewModel()
                 navController.previousBackStackEntry?.savedStateHandle?.get<Article?>("article")
                     ?.let { article ->
                         DetailsScreen(
                             article = article,
-                            event = {},
+                            event = viewModel::onEvent,
                             navigateUp = { navController.navigateUp() }
                         )
                     }

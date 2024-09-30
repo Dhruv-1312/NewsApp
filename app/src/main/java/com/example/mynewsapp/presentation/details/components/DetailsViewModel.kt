@@ -23,11 +23,11 @@ class DetailsViewModel @Inject constructor(
         when (event) {
             is DetailsEvent.UpsertDeleteArticle -> {
                 viewModelScope.launch {
-                    val article = newsUseCases.selectArticle(event.article.url)
+                    val article = newsUseCases.selectArticle(url = event.article.url)
                     if (article == null) {
-                        upsertArticle(event.article)
+                        upsertArticle(article = event.article)
                     } else {
-                        deleteArticle(event.article)
+                        deleteArticle(article = event.article)
                     }
                 }
             }
